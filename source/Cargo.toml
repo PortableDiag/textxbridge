@@ -1,0 +1,27 @@
+[package]
+name = "textxbridge"
+version = "0.4.26"
+edition = "2021"
+description = "TextXBridge"
+license = "MIT"
+
+[[bin]]
+name = "textxbridge"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+# A blocking HTTP server with no async runtime behind it. Same choice trellis
+# and keystore-manager made: this serves a handful of local agents, not a fleet.
+tiny_http = "0.12"
+directories = "5"
+aes-gcm = "0.10"
+base64 = "0.22"
+getrandom = "0.2"
+tungstenite = { version = "0.24", features = ["rustls-tls-webpki-roots"] }
+qrcode = { version = "0.14", default-features = false }
+ed25519-dalek = "2"
+sha2 = "0.10"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12", "logging"] }

@@ -1,0 +1,13 @@
+[Unit]
+Description=TextXBridge (%i): Hermes as a TextX assistant
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=@BIN@ --config @CONF_ROOT@/%i/config.toml serve
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

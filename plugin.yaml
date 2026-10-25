@@ -1,0 +1,32 @@
+name: textx-platform
+label: TextX
+kind: platform
+version: 0.4.15
+description: >
+  Your Hermes as an assistant in TextX, the Android text-messaging app, through
+  TextXBridge. The bridge holds the phone pairing keys and speaks the TextX
+  Agent Protocol; this plugin holds only the bridge key. The phone's tools
+  (read shared threads, propose a text, watch a thread) are MCP tools served by
+  the bridge, and every send is confirmed on the phone. After installing, run:
+  hermes textx setup, then hermes textx pair <phone>.
+author: PortableDiag
+# Nothing is asked at install: `hermes textx setup` sets the bridge up and
+# writes TEXTXBRIDGE_KEY / TEXTXBRIDGE_URL itself.
+optional_env:
+  - name: TEXTXBRIDGE_KEY
+    description: "The bridge's API key (no pairing key ever reaches Hermes); written by hermes textx setup"
+    prompt: "TextXBridge API key"
+    password: true
+    secret: true
+  - name: TEXTXBRIDGE_URL
+    description: "Bridge URL (default http://127.0.0.1:8793)"
+    prompt: "TextXBridge URL"
+    password: false
+  - name: TEXTX_ALLOW_ALL_USERS
+    description: "true: the bridge admits only paired phones, so Hermes's own allowlist is off for TextX"
+    prompt: "Allow all paired phones? (true/false)"
+    password: false
+  - name: TEXTX_HOME_CHANNEL
+    description: "A phone's label (or kid) for cron and notification delivery"
+    prompt: "Home phone label (or empty)"
+    password: false
